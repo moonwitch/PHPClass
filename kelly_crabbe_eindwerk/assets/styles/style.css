@@ -1,0 +1,160 @@
+:root {
+    --primary: #8b0000;
+    --secondary: #daa520;
+    --bg: #f5f5dc;
+    --text: #2f4f4f;
+    --space-sm: 10px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --font-display: 'UnifrakturMaguntia', cursive;
+    --font-body: 'Merriweather', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1000px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0 auto;
+    box-shadow: var(--shadow);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--primary);
+    font-family: var(--font-display);
+    text-align: center;
+    margin: var(--space-md) 0;
+}
+
+.container {
+    padding: var(--space-md);
+    background: rgba(238, 222, 197, 0.9);
+    width: 80%;
+    border: 2px solid var(--secondary);
+    border-radius: 2px;
+    box-shadow: var(--shadow);
+    margin: 0 auto;
+}
+
+p {
+    text-align: center;
+}
+
+nav {
+    background: var(--primary);
+    padding: var(--space-md) 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+}
+
+nav a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 1.2em;
+}
+
+button,
+.btn {
+    background: var(--primary);
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.2em;
+    border-radius: 2px;
+}
+
+button:hover,
+.btn:hover {
+    background: var(--secondary);
+    color: var(--primary);
+}
+
+.logout {
+    margin-left: auto;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.weapons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    margin: var(--space-lg) 0;
+}
+
+.weapon {
+    text-align: center;
+    cursor: pointer;
+    width: 150px;
+}
+
+.weapon:hover {
+    transform: scale(1.05);
+}
+
+.weapon img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    box-shadow: var(--shadow);
+}
+
+.weapon input[type="radio"] {
+    display: none;
+}
+
+.weapon input[type="radio"]:checked+label img {
+    border-color: var(--primary);
+}
+
+.weapon label {
+    cursor: pointer;
+    display: block;
+}
+
+.weapon span {
+    display: block;
+    margin-top: var(--space-sm);
+    font-family: var(--font-display);
+    font-size: 1.2em;
+    color: var(--text);
+}
+
+.weapon a {
+    text-decoration: none;
+}
+
+.result-round {
+    margin: 10px 0;
+}
+
+.result-win {
+    color: green;
+    font-weight: bold;
+}
+
+.result-lose {
+    color: red;
+    font-weight: bold;
+}
