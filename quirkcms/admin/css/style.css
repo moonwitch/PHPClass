@@ -1,0 +1,99 @@
+.banner{
+	background-image: url(../img/banner.jpg);
+    background-size: cover;
+    background-position: bottom;
+    min-height: 200px;
+}
+
+.banner span{
+	color: white;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 5rem;
+    text-align: right;
+    display: block;
+}
+
+.titel{
+	color: white;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 4rem;
+	text-align: center;
+}
+.btnCMS{
+	background-color: #121007;
+	color: white;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1.5rem;
+	text-align: center;
+}
+.btnCMS-s{
+	background-color: #121007;
+	color: white;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 1rem;
+	text-align: center;
+}
+
+
+.btnCMS:hover, .btnCMS-s:hover{
+	color: grey;
+}
+
+.cmsBlok{
+	background-color: #e7e6e6;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+.msg{
+	background-color: green;
+    padding: 5px;
+    color: white;
+    margin-top: 5px;
+}
+
+.note-editor.note-airframe .note-editing-area .note-editable, .note-editor.note-frame .note-editing-area .note-editable {
+	background-color: white;
+}
+.note-editor .note-toolbar, .note-popover .popover-content{
+	background-color: white;	
+}
+
+
+#fileExplorer{
+  float: left;
+  width: 35%;
+  overflow: scroll;
+  min-height: 250px;
+}
+#fileExplorer ul{
+    margin: 0;
+    padding: 0;
+}
+#fileeditor{
+    float: left;
+  width: 65%;
+  overflow: auto;
+  min-height: 250px;
+  font-size: x-small;
+  background-color: #484848;
+    color: whitesmoke;
+}
+#fileExplorer a{
+    /*text-decoration: none;*/
+    color: black;
+}
+
+.message{
+    color: white;
+    background-color: #0270c7;
+    padding: 5px;
+    float: left;
+}
+
+.deleteknopje{
+    width:10%;float: right;text-align:right;
+}
+.deleteknopje i{
+    color: #484848;
+}
