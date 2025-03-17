@@ -1,6 +1,6 @@
 /* 
  * Main Stylesheet for Zeis en Bijl
- * Style: Minimalist Japandi
+ * Style: Minimalist Japandi with Dieter Rams influence
  */
 
 /* === Base Styles === */
@@ -22,8 +22,10 @@
   /* Dark text */
 
   /* Typography */
-  --font-main: 'Noto Sans', sans-serif;
-  --font-headings: 'Noto Serif', serif;
+  --font-main: 'Helvetica Neue', Arial, sans-serif;
+  /* Clean sans-serif for body */
+  --font-headings: 'Oswald', sans-serif;
+  /* Oswald for headings */
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -35,6 +37,24 @@
   /* Borders */
   --border-radius: 2px;
   --border-width: 1px;
+}
+
+/* === Typography === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headings);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-dark);
+  text-transform: uppercase;
+  /* More Dieter Rams style */
+  letter-spacing: 0.05em;
+  /* Improved letter spacing for uppercase text */
 }
 
 * {
@@ -73,17 +93,12 @@ a:hover {
 }
 
 /* === Typography === */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headings);
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: var(--spacing-sm);
-  color: var(--color-dark);
+  color: var(--color-DARK);
 }
 
 h1 {
@@ -229,13 +244,14 @@ header {
 /* === Hero Section === */
 .hero {
   position: relative;
-  height: 60vh;
-  min-height: 400px;
+  height: 40vh; /* Reduced from 60vh for smaller hero image */
+  min-height: 300px; /* Reduced from 400px */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--spacing-lg);
   overflow: hidden;
+  color: var(--color-light);
 }
 
 .hero-image {
@@ -246,7 +262,7 @@ header {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(0.8);
+  filter: brightness(0.7); /* Darker image for better text contrast */
 }
 
 .hero-content {
@@ -255,23 +271,29 @@ header {
   padding: var(--spacing-md);
   max-width: 800px;
   z-index: 1;
-  background-color: rgba(44, 44, 42, 0.7);
+  background-color: rgba(44, 44, 42, 0.8); /* Increased opacity from 0.7 to 0.8 */
   padding: var(--spacing-md);
+  border-left: 4px solid var(--color-accent); /* Accent border for visual interest */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Text shadow for better readability */
 }
 
 .hero h1 {
   margin-bottom: var(--spacing-sm);
   color: white;
-  font-size: 3rem;
+  font-size: 2.8rem; /* Slightly reduced for better proportions */
+  letter-spacing: 1px; /* Better spacing for serif font readability */
 }
 
 .hero p {
   margin-bottom: var(--spacing-md);
   font-size: 1.2rem;
+  max-width: 600px; /* Constrain text width for better readability */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* === Buttons === */
-.btn-primary,
+.btn-primary, 
 .btn-secondary {
   display: inline-block;
   padding: 12px 24px;
@@ -342,8 +364,7 @@ label {
   color: var(--color-dark);
 }
 
-input,
-textarea {
+input, textarea {
   width: 100%;
   padding: 10px;
   border: var(--border-width) solid var(--color-secondary);
@@ -353,8 +374,7 @@ textarea {
   transition: border-color 0.3s ease;
 }
 
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
   outline: none;
   border-color: var(--color-accent);
 }
@@ -376,20 +396,39 @@ textarea:focus {
 .services-intro {
   text-align: center;
   max-width: 800px;
-  margin: 0 auto var(--spacing-lg) auto;
+  margin: 0 auto var(--spacing-md) auto;
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: flex; /* Changed from grid to flex for horizontal layout */
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
   gap: var(--spacing-md);
+  padding-bottom: var(--spacing-sm); /* Space for scrollbar */
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
+  -webkit-overflow-scrolling: touch; /* Better touch scrolling */
+}
+
+/* Hide scrollbar visually but maintain functionality */
+.services-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.services-grid::-webkit-scrollbar-track {
+  background: var(--color-light);
+}
+
+.services-grid::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 3px;
 }
 
 .service-card {
+  flex: 0 0 300px; /* Fixed width for each card, doesn't shrink or grow */
   background-color: var(--color-light);
   border-radius: var(--border-radius);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: var(--spacing-sm);
 }
 
 .service-card:hover {
@@ -403,8 +442,7 @@ textarea:focus {
   object-fit: cover;
 }
 
-.service-card h3,
-.service-card p {
+.service-card h3, .service-card p {
   padding: 0 var(--spacing-sm);
 }
 
@@ -416,6 +454,31 @@ textarea:focus {
   margin: var(--spacing-sm);
 }
 
+/* For desktop view, ensure there's a clean way to see there are more items */
+@media screen and (min-width: 768px) {
+  .services-grid::after {
+    content: '';
+    flex: 0 0 20px;
+  }
+}
+
+/* For mobile responsiveness, make it clearer that there's horizontal scrolling */
+@media screen and (max-width: 767px) {
+  .services-grid {
+    padding-bottom: var(--spacing-md);
+  }
+  
+  .services-intro::after {
+    content: '← Scroll to see more →';
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+}
+ 
 /* === Projects Page === */
 .projects-intro {
   text-align: center;
@@ -425,7 +488,7 @@ textarea:focus {
 
 .project-filters {
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   margin-bottom: var(--spacing-md);
   flex-wrap: wrap;
 }
@@ -442,8 +505,7 @@ textarea:focus {
   border-bottom: 1px solid transparent;
 }
 
-.filter-btn:hover,
-.filter-btn.active {
+.filter-btn:hover, .filter-btn.active {
   color: var(--color-primary);
   border-bottom: 1px solid var(--color-primary);
 }
@@ -472,19 +534,34 @@ textarea:focus {
   object-fit: cover;
 }
 
+/* Add gradient overlay for better text visibility on project images */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250px; /* Match image height */
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .project-info {
   padding: var(--spacing-sm);
   background-color: var(--color-light);
 }
 
-.project-tag {
-  display: inline-block;
-  padding: 3px 8px;
-  background-color: var(--color-primary);
+/* For cards with titles on images */
+.overlay-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--spacing-sm);
   color: white;
-  font-size: 0.8rem;
-  border-radius: var(--border-radius);
-  margin-top: var(--spacing-xs);
+  z-index: 2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* === Testimonials === */
@@ -544,4 +621,5 @@ textarea:focus {
   background-color: var(--color-light);
   padding: var(--spacing-md);
   border-radius: var(--border-radius);
-  border-bottom: 3px solid var(
+  border-bottom: 3px solid var(--color-accent);
+}

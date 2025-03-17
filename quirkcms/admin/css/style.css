@@ -1,99 +1,426 @@
-.banner{
-	background-image: url(../img/banner.jpg);
-    background-size: cover;
-    background-position: bottom;
-    min-height: 200px;
+/* 
+ * Admin Stylesheet for Zeis en Bijl
+ * Style: Minimalist Japandi - Admin Interface
+ */
+
+/* === Base Styles === */
+:root {
+  /* Color Palette - same as frontend for consistency */
+  --color-primary: #566246;      /* Moss green */
+  --color-secondary: #a8a99e;    /* Sage gray */
+  --color-accent: #c99c6a;       /* Warm wood */
+  --color-light: #f5f5f0;        /* Off-white */
+  --color-dark: #2c2c2a;         /* Almost black */
+  --color-background: #f9f8f6;   /* Soft cream background */
+  --color-text: #333331;         /* Dark text */
+  
+  /* Admin-specific colors */
+  --color-success: #6b9080;      /* Muted green for success messages */
+  --color-warning: #e6b89c;      /* Soft orange for warnings */
+  --color-error: #9e2a2b;        /* Muted red for errors */
+  --color-info: #406e8e;         /* Muted blue for info */
+  
+  /* Typography */
+  --font-main: 'Urbanist', sans-serif;
+  --font-headings: 'Smythe', serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+  
+  /* Borders */
+  --border-radius: 2px;
+  --border-width: 1px;
 }
 
-.banner span{
-	color: white;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 5rem;
-    text-align: right;
-    display: block;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.titel{
-	color: white;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 4rem;
-	text-align: center;
-}
-.btnCMS{
-	background-color: #121007;
-	color: white;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 1.5rem;
-	text-align: center;
-}
-.btnCMS-s{
-	background-color: #121007;
-	color: white;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 1rem;
-	text-align: center;
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
-
-.btnCMS:hover, .btnCMS-s:hover{
-	color: grey;
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.6;
+  font-weight: 300;
+  padding-bottom: 3rem;
 }
 
-.cmsBlok{
-	background-color: #e7e6e6;
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 30px;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
-.msg{
-	background-color: green;
-    padding: 5px;
-    color: white;
-    margin-top: 5px;
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-dark);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+.lead {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+/* === Admin Layout === */
+.container {
+  width: 95%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-md) 0;
+}
+
+.header {
+  padding: var(--spacing-md) 0;
+  margin-bottom: var(--spacing-md);
+  border-bottom: var(--border-width) solid var(--color-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.header-title h1 {
+  margin-bottom: 0;
+}
+
+.admin-sidebar {
+  width: 240px;
+  background-color: var(--color-light);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+  height: 100%;
+}
+
+.admin-content {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--spacing-md);
+}
+
+/* === Navigation === */
+.admin-nav {
+  margin-bottom: var(--spacing-md);
+}
+
+.admin-nav h3 {
+  font-size: 1.1rem;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-xs);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: var(--border-width) solid var(--color-secondary);
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-list li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.nav-list a {
+  display: block;
+  padding: 8px 12px;
+  color: var(--color-dark);
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  font-weight: 400;
+}
+
+.nav-list a:hover, .nav-list a.active {
+  background-color: rgba(86, 98, 70, 0.1);
+  color: var(--color-primary);
+  padding-left: 15px;
+}
+
+.nav-list a i {
+  margin-right: 8px;
+  width: 20px;
+  text-align: center;
+}
+
+/* === Tables === */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-md);
+}
+
+.admin-table th, .admin-table td {
+  padding: var(--spacing-xs);
+  text-align: left;
+  border-bottom: var(--border-width) solid var(--color-secondary);
+}
+
+.admin-table th {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-weight: 600;
+}
+
+.admin-table tr:nth-child(even) {
+  background-color: var(--color-background);
+}
+
+.admin-table tr:hover {
+  background-color: rgba(86, 98, 70, 0.1);
+}
+
+/* === Forms === */
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: var(--spacing-xs);
+  border: var(--border-width) solid var(--color-secondary);
+  border-radius: var(--border-radius);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group .form-error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-light);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-accent);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+}
+
+.btn-danger {
+  background-color: var(--color-error);
+}
+
+.btn-danger:hover {
+  background-color: var(--color-accent);
+}
+
+/* === Messages === */
+.msg {
+  padding: var(--spacing-xs);
+  color: var(--color-light);
+  margin-top: var(--spacing-xs);
+}
+
+.msg-success {
+  background-color: var(--color-success);
+}
+
+.msg-warning {
+  background-color: var(--color-warning);
+}
+
+.msg-error {
+  background-color: var(--color-error);
+}
+
+.msg-info {
+  background-color: var(--color-info);
+}
+
+/* === Custom Styles === */
+.banner {
+  background-image: url(../img/banner.jpg);
+  background-size: cover;
+  background-position: bottom;
+  min-height: 200px;
+}
+
+.banner span {
+  color: white;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 5rem;
+  text-align: right;
+  display: block;
+}
+
+.titel {
+  color: white;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.btnCMS {
+  background-color: #121007;
+  color: white;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.btnCMS-s {
+  background-color: #121007;
+  color: white;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.btnCMS:hover, .btnCMS-s:hover {
+  color: grey;
+}
+
+.cmsBlok {
+  background-color: #e7e6e6;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
 }
 
 .note-editor.note-airframe .note-editing-area .note-editable, .note-editor.note-frame .note-editing-area .note-editable {
-	background-color: white;
-}
-.note-editor .note-toolbar, .note-popover .popover-content{
-	background-color: white;	
+  background-color: white;
 }
 
+.note-editor .note-toolbar, .note-popover .popover-content {
+  background-color: white;
+}
 
-#fileExplorer{
+#fileExplorer {
   float: left;
   width: 35%;
   overflow: scroll;
   min-height: 250px;
 }
-#fileExplorer ul{
-    margin: 0;
-    padding: 0;
+
+#fileExplorer ul {
+  margin: 0;
+  padding: 0;
 }
-#fileeditor{
-    float: left;
+
+#fileeditor {
+  float: left;
   width: 65%;
   overflow: auto;
   min-height: 250px;
   font-size: x-small;
   background-color: #484848;
-    color: whitesmoke;
-}
-#fileExplorer a{
-    /*text-decoration: none;*/
-    color: black;
+  color: whitesmoke;
 }
 
-.message{
-    color: white;
-    background-color: #0270c7;
-    padding: 5px;
-    float: left;
+#fileExplorer a {
+  /*text-decoration: none;*/
+  color: black;
 }
 
-.deleteknopje{
-    width:10%;float: right;text-align:right;
+.message {
+  color: white;
+  background-color: #0270c7;
+  padding: 5px;
+  float: left;
 }
-.deleteknopje i{
-    color: #484848;
+
+.deleteknopje {
+  width: 10%;
+  float: right;
+  text-align: right;
+}
+
+.deleteknopje i {
+  color: #484848;
 }
