@@ -1,6 +1,16 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header("Location: ./login/");
+  die("Redirecting to login page");
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>QuirkCMS Admin</title>
   <!-- BOOTSTRAP -->

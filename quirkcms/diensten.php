@@ -7,15 +7,15 @@ $heroAlt = "Professionele tuindiensten van Zeis en Bijl";
 
 <!DOCTYPE html>
 <html lang="nl">
-<?php include './assets/head.php'; ?>
+<?php include './includes/head.php'; ?>
 
 <body>
     <header>
-        <?php include './assets/navigation.php'; ?>
+        <?php include './includes/navigation.php'; ?>
     </header>
     <main>
         <section class="hero">
-            <?php include './assets/title.php'; ?>
+            <?php include './includes/title.php'; ?>
             <img src="<?php echo $heroImage; ?>" alt="<?php echo $heroAlt; ?>" class="hero-image">
         </section>
 
@@ -69,7 +69,7 @@ $heroAlt = "Professionele tuindiensten van Zeis en Bijl";
         </section>
     </main>
 
-    <?php include './assets/footer.php'; ?>
+    <?php include './includes/footer.php'; ?>
 </body>
 
 </html>

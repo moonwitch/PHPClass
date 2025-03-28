@@ -1,3 +1,28 @@
+<?php
+require_once('../classes/class.accountDB.php');
+
+session_start();
+
+if (isset($_POST['submitKnopLogin']) && 
+	isset($_POST['email']) &&  !empty($_POST['email']) &&
+	isset($_POST['ww']) && !empty($_POST['ww']))
+	{
+		$email = strtolower(trim($_POST['email']));
+		$ww = trim($_POST['ww']);
+
+		$accDB = new accountDB();
+		$account = $accDB->findLogin($email,$ww);
+		/* if account is found -> user exists redirect to page */
+		if ($account) {
+			$_SESSION['user'] = $account;
+			header('Location: ../');
+			die("Already logged in");
+		} else {
+			$_SESSION['msg'] = "Foutieve login";
+		}
+	}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,14 +81,14 @@
 				<div class="form-group">
 					<div class="col-sm-12">
 						<div class="input-group">
-							<input type="text" class="form-control" name="email" placeholder="je mail adres"/>
+							<input type="text" class="form-control" name="email" placeholder="je mail adres" required autofocus/>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-12">
 						<div class="input-group">
-							<input type="password" class="form-control" name="ww" placeholder="je wachtwoord"/>
+							<input type="password" class="form-control" name="ww" placeholder="je wachtwoord" required/>
 						</div>
 					</div>
 				</div>
