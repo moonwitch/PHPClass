@@ -1,9 +1,9 @@
-<hr>
-      <footer class="footer">
-        <p>© CVO-Volt Leuven <?=date('Y')?></p>
-      </footer>
+  <hr>
+  <footer class="footer">
+    <p>© CVO-Volt Leuven <?=date('Y')?></p>
+  </footer>
 
-    </div> <!-- /container -->
+  </div> <!-- /container -->
 </body>
 
 <!-- BOOTSTRAP -->
@@ -15,7 +15,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!-- END BOOTSTRAP -->
 
-
+<!-- dataTables -->
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
  $(function () {
@@ -26,7 +26,7 @@
         paging: true,
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+          'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
    });

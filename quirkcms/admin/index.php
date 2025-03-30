@@ -1,12 +1,10 @@
 <?php
+  session_start();
 
-session_start();
-
-if (!isset($_SESSION['user'])) {
-  header("Location: ./login/");
-  die("Redirecting to login page");
-}
-
+  if (!isset($_SESSION['user'])) {
+    header("Location: ./login/");
+    die("Redirecting to login page");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -110,8 +108,4 @@ if (!isset($_SESSION['user'])) {
       </div>
     </div>
 
-    <?php
-
-    require_once("./inc/footer.php");
-
-    ?>
+<?php require_once("./inc/footer.php"); ?>

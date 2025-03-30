@@ -1,5 +1,4 @@
 <?php
-
 echo '<h1>Setup of QuirkCMS...</h1>';
 // DB connection for setup
 require_once("../classes/class.accountDB.php");
@@ -54,8 +53,8 @@ $accountDB->insert($account);
 // get list of all accounts
 echo '<p>Getting list of all accounts...<br>';
 $accounts = $accountDB->getAll();
-foreach($accounts as $account){
-    echo $account->id.' '.$account->firstname.' '.$account->name.' '.$account->email.' '.$account->role.' '.$account->status.'<br>';
+foreach ($accounts as $account) {
+    echo $account->id . ' ' . $account->firstname . ' ' . $account->name . ' ' . $account->email . ' ' . $account->role . ' ' . $account->status . '<br>';
 }
 echo '</p>';
 
@@ -83,5 +82,4 @@ echo '<p>Getting latest updated account...<br>';
 $account = $accountDB->getOne(2);
 echo $account->id . ' ' . $account->firstname . ' ' . $account->name . ' ' . $account->email . ' ' . $account->role . ' ' . $account->status . '<br>';
 echo '</p>';
-
 ?>

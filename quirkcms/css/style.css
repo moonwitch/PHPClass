@@ -1,31 +1,24 @@
-/* 
- * Main Stylesheet for Zeis en Bijl
- * Style: Minimalist Japandi with Dieter Rams influence
- */
-
 /* === Base Styles === */
 :root {
   /* Color Palette */
   --color-primary: #566246;
-  /* Moss green */
   --color-secondary: #a8a99e;
-  /* Sage gray */
   --color-accent: #c99c6a;
-  /* Warm wood */
   --color-light: #f5f5f0;
-  /* Off-white */
   --color-dark: #2c2c2a;
-  /* Almost black */
   --color-background: #f9f8f6;
-  /* Soft cream background */
   --color-text: #333331;
-  /* Dark text */
 
   /* Typography */
-  --font-main: 'Helvetica Neue', Arial, sans-serif;
-  /* Clean sans-serif for body */
+  --font-main: "Merriweather", serif;
   --font-headings: 'Oswald', sans-serif;
-  /* Oswald for headings */
+
+  /* Bootstrap overrides */
+  --bs-primary: var(--color-primary);
+  --bs-secondary: var(--color-secondary);
+  --bs-success: #6b9080; /* Muted green for success messages */
+  --bs-warning: #e6b89c; /* Soft orange for warnings */
+  --bs-danger: #9e2a2b; /* Muted red for errors */
 
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -52,9 +45,15 @@ h6 {
   margin-bottom: var(--spacing-sm);
   color: var(--color-dark);
   text-transform: uppercase;
-  /* More Dieter Rams style */
   letter-spacing: 0.05em;
-  /* Improved letter spacing for uppercase text */
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 * {
@@ -65,15 +64,6 @@ h6 {
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: var(--font-main);
-  color: var(--color-text);
-  background-color: var(--color-background);
-  line-height: 1.6;
-  font-weight: 300;
 }
 
 img {
@@ -91,14 +81,6 @@ a {
 a:hover {
   color: var(--color-accent);
 }
-
-/* === Typography === */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-headings);
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: var(--spacing-sm);
-  color: var(--color-DARK);
 }
 
 h1 {
@@ -124,12 +106,13 @@ p {
   margin-bottom: var(--spacing-sm);
 }
 
-.lead {
+.lead { 
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.8;
   margin-bottom: var(--spacing-md);
 }
+
 
 blockquote {
   font-style: italic;
@@ -145,7 +128,8 @@ cite {
   color: var(--color-secondary);
 }
 
-/* === Layout === */
+
+/* === Layout === */ 
 .container {
   width: 90%;
   max-width: 1200px;
@@ -154,7 +138,7 @@ cite {
 }
 
 section {
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg); 
 }
 
 .row {
@@ -163,7 +147,8 @@ section {
   margin: 0 -1rem;
 }
 
-/* === Header & Navigation === */
+
+/* === Header & Navigation === */ 
 header {
   background-color: var(--color-light);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -241,7 +226,8 @@ header {
   transition: all 0.3s ease;
 }
 
-/* === Hero Section === */
+
+/* === Hero Section === */ 
 .hero {
   position: relative;
   height: 40vh; /* Reduced from 60vh for smaller hero image */
@@ -292,6 +278,7 @@ header {
   margin-right: auto;
 }
 
+ 
 /* === Buttons === */
 .btn-primary, 
 .btn-secondary {
@@ -326,7 +313,8 @@ header {
   color: white;
 }
 
-/* === Contact Page === */
+
+/* === Contact Page === */ 
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -392,7 +380,8 @@ input:focus, textarea:focus {
   text-align: center;
 }
 
-/* === Services Page === */
+
+/* === Services Page === */ 
 .services-intro {
   text-align: center;
   max-width: 800px;
@@ -478,8 +467,9 @@ input:focus, textarea:focus {
     margin-bottom: var(--spacing-sm);
   }
 }
+
  
-/* === Projects Page === */
+/* === Projects Page === */ 
 .projects-intro {
   text-align: center;
   max-width: 800px;
@@ -564,7 +554,7 @@ input:focus, textarea:focus {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* === Testimonials === */
+/* === Testimonials === */ 
 .testimonial-section {
   text-align: center;
   background-color: var(--color-light);
@@ -587,10 +577,12 @@ input:focus, textarea:focus {
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* === About Page === */
+
+/* === About Page === */ 
 .about-content {
   display: grid;
   grid-template-columns: 3fr 2fr;
+  
   gap: var(--spacing-lg);
   margin: var(--spacing-lg) 0;
 }

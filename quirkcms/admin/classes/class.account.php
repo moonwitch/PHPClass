@@ -1,5 +1,5 @@
 <?php
-class account{
+    class account{
     // properties
     public $id;
     public $created;
@@ -22,5 +22,5 @@ class account{
         // session close
         // ...
     }
-}
+    }
 ?>
