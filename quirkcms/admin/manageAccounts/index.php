@@ -1,10 +1,18 @@
 <?php
+
 	require_once("../classes/class.accountDB.php");
+
 	session_start();
 
 	if(!isset($_SESSION['user'])) {
 		header("Location: ../login/");
 		die("Please log in first.");
+	}
+
+	if($_SESSION['user']->role == "admin") {
+		$is_admin = true;
+	} else {
+		$is_admin = false;
 	}
 
 	// Get users
@@ -14,10 +22,13 @@
 	require_once("../inc/header.php"); 
 ?>
 
+
 <div class='row'>
 	<div class="col-md-12" style='margin-top: 25px;'>
 		<h3>Gebruikers</h3>
-		<a href='./new.php' class='btn btnCMS'>Add new account </a>
+		<?php
+		if ($is_admin) echo "<a href='./new.php' class='btn btnCMS'>Add new account </a>"; 
+		?>
 
 		<table class="table table-bordered table-striped table-hover dataTable" style='font-size: small;'>
 			<thead>
@@ -36,11 +47,13 @@
 				<?php
 				foreach ($allAccounts as $account) {
 				?>
-					<tr>
+					<tr>						
 						<td>
+						<?php if ($is_admin) { ?>
 							<a href='./edit.php?id=<?php echo $account->id; ?>' title='editeer'><i class='fa fa-pencil'></i></a>&nbsp;&nbsp;
 							<a onclick='if(confirm("Ben je zeker dat dit echt wil verwijderen?")){return true;}else{return false;}' href='./delete.php?id=<?php echo $account->id; ?>' title='verwijder'><i class='fa fa-trash-o'></i></a>&nbsp;&nbsp;
 							<a href='./changepassword.php?id=<?php echo $account->id; ?>'><i class='fa fa-user-secret'></i></a>
+						<?php } ?>
 						</td>
 						<td><?php echo $account->created; ?></td>
 						<td><?php echo $account->id; ?></td>

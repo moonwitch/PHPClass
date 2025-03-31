@@ -26,14 +26,14 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 // And update password when form is submitted
 if (isset($_POST['updatepassword'])) {
-    if($_POST['password'] == $_POST['password2']){
+    if ($_POST['password'] == $_POST['password2']) {
         $accDB->updatePassword($account->id, $_POST['password']);
     } else {
-        ?>
+?>
         <div class="alert alert-danger" role="alert">
             Passwords are not the same!
         </div>
-        <?php
+<?php
     }
     header("Location: ./");
 }
@@ -49,22 +49,20 @@ require_once("../inc/header.php");
 
         <form action="" method="post">
             <div class="form-group">
-                <div class="col-md-2">
-                    New password
-                </div>
-                <div class="col-md-10">
+                <div class="col-sm-12">
+                    <label>New password</label>
+
                     <div class="input-group">
-                        <input type="password" name="password" value="">
+                        <input type="password" name="password" value="" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-md-2">
-                    Repeat password
-                </div>
-                <div class="col-md-10">
+                <div class="col-sm-12">
+                    <label>Repeat password</label>
+
                     <div class="input-group">
-                        <input type="password" name="password2" value="">
+                        <input type="password" name="password2" value="" class="form-control">
                     </div>
                 </div>
             </div>

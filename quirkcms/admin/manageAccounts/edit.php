@@ -44,43 +44,39 @@ require_once("../inc/header.php");
 
         <form action="" method="post">
             <div class="form-group">
-                <div class="col-md-2">
-                    Firstname
-                </div>
-                <div class="col-md-10">
+                <div class="col-sm-12">
+                    <label>Firstname</label>
+                
                     <div class="input-group">
-                        <input type="text" name="firstname" value="<?= $account->firstname ?>">
+                        <input type="text" name="firstname" value="<?= $account->firstname ?>" class="form-control">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-2">
-                    Name
-                </div>
-                <div class="col-md-10">
+                <div class="col-sm-12">
+                    <label>Name</label>
+                
                     <div class="input-group">
-                        <input type="text" name="name" value="<?= $account->name ?>">
+                        <input type="text" name="name" value="<?= $account->name ?>" class="form-control">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-2">
-                    email
-                </div>
-                <div class="col-md-10">
+                <div class="col-sm-12">
+                    <label>email</label>
+               
                     <div class="input-group">
-                        <input type="text" name="email" value="<?= $account->email ?>">
+                        <input type="text" name="email" value="<?= $account->email ?>" class="form-control">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-2">
-                    Role
-                </div>
-                <div class="col-md-10">
+                <div class="col-sm-12">
+                    <label>Role</label>
+                
                     <div class="input-group">
                         <select name="role">
                             <option value="admin" <?= ($account->role == "admin") ? "selected" : "" ?>>Admin</option>

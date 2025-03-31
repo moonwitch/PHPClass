@@ -98,7 +98,7 @@
             $record = $stmt->fetchObject("account");
 
             if ($record && password_verify($password, $record->password)) {
-                return true;
+                return $record; // Return the user object instead of true
             } else {
                 return false;
             }

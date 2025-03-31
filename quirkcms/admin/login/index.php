@@ -16,6 +16,7 @@ if (
 	/* if account is found -> user exists redirect to page */
 	if ($account) {
 		$_SESSION['user'] = $account;
+		
 		header('Location: ../');
 		die("Already logged in");
 	} else {
