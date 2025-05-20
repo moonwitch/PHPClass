@@ -27,7 +27,7 @@
 	<div class="col-md-12" style='margin-top: 25px;'>
 		<h3>Gebruikers</h3>
 		<?php
-		if ($is_admin) echo "<a href='./new.php' class='btn btnCMS'>Add new account </a>"; 
+		if ($is_admin) echo "<a href='./new.php' class='btn btn-primary'>Add new account </a>"; 
 		?>
 
 		<table class="table table-bordered table-striped table-hover dataTable" style='font-size: small;'>

@@ -4,7 +4,7 @@
 <head>
 	<title></title>
 	<!-- BOOTSTRAP -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 
@@ -12,7 +12,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../../css/style.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="cleartype" content="on">
@@ -53,5 +53,6 @@
 		</div>
 
 		<div class="jumbotron banner">
-			<span>QuirkCMS</span>
+			<h1 class="display-4">QuirkCMS</h1>
+			<p class="lead">A simple CMS for your website.</p>
 		</div>

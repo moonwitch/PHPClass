@@ -70,4 +70,4 @@ require_once("../inc/header.php");
             <input type='submit' class='btn btn-lg button-primary' name='updatepassword' value='Update password'>
 
         </form>
-        <?php require_once("../inc/footer.php"); ?>
+<?php require_once("../inc/footer.php"); ?>
