@@ -1,8 +1,22 @@
 <?php
-require_once('../classes/class.accountDB.php');
 
+// Autoload classes
+spl_autoload_register(function ($class_name) {
+    require "../classes/class." . $class_name . ".php";
+});
+
+// Start session
 session_start();
 
+// general feedback method :D
+if (isset($_SESSION["cms_feedback"])) {
+    echo '<div class="alert alert-success">' .
+        htmlspecialchars($_SESSION["cms_feedback"]) .
+        "</div>";
+    unset($_SESSION["cms_feedback"]);
+}
+
+// Is the form submitted?
 if (
 	isset($_POST['submitKnopLogin']) &&
 	isset($_POST['email']) &&  !empty($_POST['email']) &&
@@ -24,26 +38,10 @@ if (
 	}
 }
 
+// HTML header\
+require_once "../inc/header.php";
 ?>
-<!DOCTYPE html>
-<html>
 
-<head>
-	<title></title>
-	<!-- BOOTSTRAP -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-	<!-- GOOGLE FONTS-->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald&display=swap" rel="stylesheet">
-	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/style.css">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="cleartype" content="on">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-</head>
 
 <body class="text-center">
 	<div class="container">
@@ -66,12 +64,12 @@ if (
 		<div class='row'>
 			<div class="col-md-12">
 				<?php
-				if (isset($_SESSION['msg'])) {
+				if (isset($_SESSION['cms_feedback'])) {
 					echo "<div class='alert alert-danger alert-dismissible' role='alert'>
 <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
 " . $_SESSION['msg'] . "
 </div>";
-					unset($_SESSION['msg']);
+					unset($_SESSION['cms_feedback']);
 				}
 				?>
 			</div>
@@ -107,7 +105,6 @@ if (
 		</footer>
 
 	</div>
-	<!-- /container -->
 </body>
 
 <!-- JQUERY AND POPPER -->

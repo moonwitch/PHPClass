@@ -1,19 +1,18 @@
 <?php
+// Load classes
 spl_autoload_register(function ($class_name) {
     require "../classes/class." . $class_name . ".php";
 });
+
+// Start Sessions
 session_start();
 
+// Check if user is logged in
 if (!isset($_SESSION["user"])) {
     header("Location: ../login/");
     die("Please log in first.");
 }
 
-if ($_SESSION["user"]->role == "admin") {
-    $is_admin = true;
-} else {
-    $is_admin = false;
-}
 // general feedback method :D
 if (isset($_SESSION["cms_feedback"])) {
     echo '<div class="alert alert-success">' .
@@ -26,10 +25,7 @@ if (isset($_SESSION["cms_feedback"])) {
 $pagesDir = scandir("../cms/data/");
 $pages = [];
 
-$pageDirs = scandir("../cms/data/");
-$pages = [];
-
-foreach ($pageDirs as $dir) {
+foreach ($pagesDir as $dir) {
     if ($dir == "." || $dir == "..") {
         continue;
     }
@@ -49,16 +45,19 @@ foreach ($pageDirs as $dir) {
     }
 }
 
+//html header
 require_once "../inc/header.php";
 ?>
 
+<main class="container py-4">
+    <h3>Content Management System</h3>
+    <div class="d-grid gap-2 py-4 d-md-flex justify-content-md-end">
+        <a href='./create_page.php' class='btn btn-primary' role="button">Add new page </a>
+        <a href='./create_block.php' class='btn btn-primary' role="button">Add new block </a>
+        <a href="../" class="btn btn-outline-primary" role="button">Back to Admin</a>
+    </div>
 
-<div class='row'>
-    <div class="col-md-12" style='margin-top: 25px;'>
-        <h3>Content Management System</h3>
-        <a href='./create_page.php' class='btn btn-primary'>Add new page </a>
-        <a href='./create_block.php' class='btn btn-primary'>Add new block </a>
-
+    <div class="row g-4">
         <table class="table table-bordered table-striped table-hover dataTable" style='font-size: small;'>
             <thead>
                 <tr>
@@ -95,8 +94,7 @@ require_once "../inc/header.php";
                 } ?>
             </tbody>
         </table>
-
     </div>
-</div>
+</main>
 
 <?php require_once "../inc/footer.php"; ?>

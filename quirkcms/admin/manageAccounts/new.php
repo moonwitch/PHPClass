@@ -1,16 +1,30 @@
 <?php
+// Autoload classes
+spl_autoload_register(function ($class_name) {
+    require "../classes/class." . $class_name . ".php";
+});
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once("../classes/class.accountDB.php");
-
+// Start session
 session_start();
 
-if (!isset($_SESSION['user'])) {
+// Check if user is logged in
+if (!isset($_SESSION["user"])) {
     header("Location: ../login/");
     die("Please log in first.");
+}
+
+// general feedback method :D
+if (isset($_SESSION["cms_feedback"])) {
+    echo '<div class="alert alert-success">' .
+        htmlspecialchars($_SESSION["cms_feedback"]) .
+        "</div>";
+    unset($_SESSION["cms_feedback"]);
+}
+
+if ($_SESSION['user']->role == "admin") {
+    $is_admin = true;
+} else {
+    $is_admin = false;
 }
 
 // Connect to DB
@@ -39,10 +53,13 @@ if (isset($_POST['adduserdata'])) {
 require_once("../inc/header.php");
 ?>
 
-<div class="row">
-    <div class="col-md-12">
-
-        <h3>New Account</h3>
+<main class="container py-4">
+    <div class="row g-4">
+        <h3>New users</h3>
+        <a href="../" class="btn btn-secondary">Back to CMS</a>
+        <?php
+        if ($is_admin) echo "<a href='./new.php' class='btn btn-primary'>Add new account </a>";
+        ?>
 
         <form action='' method='post'>
             <div class="form-group">
@@ -76,7 +93,7 @@ require_once("../inc/header.php");
             <div class="form-group">
                 <div class="col-sm-12">
                     <label>Role</label>
-         
+
                     <div class="input-group">
                         <select name="role" id="role" class="form-control" required>
                             <option value="">Select role</option>
@@ -105,7 +122,6 @@ require_once("../inc/header.php");
 
         </form>
     </div>
-</div>
-
+</main>
 
 <?php require_once("../inc/footer.php"); ?>

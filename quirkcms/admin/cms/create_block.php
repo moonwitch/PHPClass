@@ -1,20 +1,20 @@
 <?php
+
+// Autoload classes
 spl_autoload_register(function ($class_name) {
     require "../classes/class." . $class_name . ".php";
 });
+
+// Start session
 session_start();
 
+// Check if user is logged in
 if (!isset($_SESSION["user"])) {
     header("Location: ../login/");
     die("Please log in first.");
 }
 
-if ($_SESSION["user"]->role == "admin") {
-    $is_admin = true;
-} else {
-    $is_admin = false;
-}
-
+// general feedback method :D
 if (isset($_SESSION["cms_feedback"])) {
     echo '<div class="alert alert-success">' .
         htmlspecialchars($_SESSION["cms_feedback"]) .
@@ -63,30 +63,40 @@ if (
     }
 }
 
+// HTML header
 require_once "../inc/header.php";
 ?>
 
-<div class="container mt-5">
-    <h2>Create New Block</h2>
-
-    <form method="post">
-        <div class="form-group">
-            <label for="page">Select Page:</label>
-            <select name="page" class="form-control" id="page">
-                <option value="">Select a page</option>
-                <?php foreach ($pages as $page): ?>
-                    <option value="<?php echo htmlspecialchars(
-                        $page
-                    ); ?>"><?php echo htmlspecialchars($page); ?></option>
-                <?php endforeach; ?>
-            </select>
-            <br>
-            <label for="blockName">Block Name:</label>
-            <input type="text" class="form-control" id="blockName" name="blockName" required>
+<main class="container py-4">
+    <div class="row g-4">
+        <h3>Content Management System</h3>
+        <div class="d-grid gap-2 py-4 d-md-flex justify-content-md-end">
+            <a href="../" class="btn btn-secondary" role="button">Back to Admin</a>
         </div>
-        <button type="submit" name="createNewBlock" class="btn btn-primary">Create Block</button>
-        <a href="./" class="btn btn-secondary">Cancel</a>
-    </form>
-</div>
+        <h2>Create New Block</h2>
+        <form method="post">
+            <div class="form-group">
+                <label for="page">Select Page:</label>
+                <select name="page" class="form-control" id="page">
+                    <option value="">Select a page</option>
+                    <?php foreach ($pages as $page): ?>
+                        <option value="<?php echo htmlspecialchars($page); ?>">
+                            <?php echo htmlspecialchars($page); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+                <label for="blockName">Block Name:</label>
+                <input type="text" class="form-control" id="blockName" name="blockName" required>
+            </div>
+            <button type="submit" name="createNewBlock" class="btn btn-primary">Create Block</button>
+            <a href="./" class="btn btn-secondary">Cancel</a>
+        </form>
 
-<?php require_once "../inc/footer.php"; ?>
+    </div>
+</main>
+
+<?php // HTML footer
+
+require_once "../inc/footer.php";
+?>

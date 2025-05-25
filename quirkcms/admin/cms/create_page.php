@@ -32,9 +32,7 @@ if (isset($_POST["createNewPage"]) && !empty($_POST["page"])) {
     } else {
         // Create the page
         if (mkdir($path, 0777, true)) {
-            $_SESSION[
-                "cms_feedback"
-            ] = "Page '$page' created successfully!";
+            $_SESSION["cms_feedback"] = "Page '$page' created successfully!";
             header("Location: ./");
             exit();
         } else {
@@ -43,11 +41,18 @@ if (isset($_POST["createNewPage"]) && !empty($_POST["page"])) {
     }
 }
 
+// HTML header
 require_once "../inc/header.php";
 ?>
 
-<div class="container mt-5">
+<main class="container">
+    <h3>Content Management System</h3>
+    <div class="d-grid gap-2 py-4 d-md-flex justify-content-md-end">
+        <a href="./" class="btn btn-secondary" role="button">Back to Admin</a>
+    </div>
+
     <h2>Create New Page</h2>
+    <p>Fill in the form below to create a new page.</p>
     <form method="post">
         <div class="form-group">
             <label for="page">Page Name:</label>
@@ -56,6 +61,10 @@ require_once "../inc/header.php";
         <button type="submit" name="createNewPage" class="btn btn-primary">Create Page</button>
         <a href="./" class="btn btn-secondary">Cancel</a>
     </form>
-</div>
+    </div>
+</main>
 
-<?php require_once "../inc/footer.php"; ?>
+    <?php // HTML footer
+
+require_once "../inc/footer.php";
+?>
