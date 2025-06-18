@@ -68,28 +68,34 @@ require_once "../inc/header.php";
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($pages as $page => $blocks) {
-                    foreach ($blocks as $block) {
-                        $urlSafePage = urlencode($page); // page
-                        $urlSafeBlock = urlencode($block); // blok
-                        echo "
-                    <tr>
-                        <td style='width: 50px;'>
-                            <a href='./edit.php?page=$urlSafePage&block=$urlSafeBlock'><i class='fa fa-pencil'></i></a>
-                            &nbsp;&nbsp;
-                            <a onclick='if(confirm(\"Ben je zeker dat dit echt wil verwijderen?\")){return true;}else{return false;}' href='./delete.php?page=$page&block=$block'><i class='fa fa-trash-o'></i></a>
-                            &nbsp;&nbsp;
-                        </td>
-                        <td>$page</td>
-                        <td><a href='./edit.php?page=$urlSafePage&block=$urlSafeBlock'>$block</a></td>
-                        <td>" .
-                            date(
-                                "d-m-Y H:i:s",
-                                filemtime("./data/$page/$block")
-                            ) .
-                            "</td>
-                    </tr>
-                    ";
+                <?php
+                if (count($pages) <= 0) {
+                    echo "<tr><td colspan='4'>No pages or blocks found. Please create a new page or block.</td></tr>";
+                    return;
+                } else {
+                    foreach ($pages as $page => $blocks) {
+                        foreach ($blocks as $block) {
+                            $urlSafePage = urlencode($page); // page
+                            $urlSafeBlock = urlencode($block); // blok
+                            echo "
+                        <tr>
+                            <td style='width: 50px;'>
+                                <a href='./edit.php?page=$urlSafePage&block=$urlSafeBlock'><i class='fa fa-pencil'></i></a>
+                                &nbsp;&nbsp;
+                                <a onclick='if(confirm(\"Ben je zeker dat dit echt wil verwijderen?\")){return true;}else{return false;}' href='./delete.php?page=$page&block=$block'><i class='fa fa-trash'></i></a>
+                                &nbsp;&nbsp;
+                            </td>
+                            <td>$page</td>
+                            <td><a href='./edit.php?page=$urlSafePage&block=$urlSafeBlock'>$block</a></td>
+                            <td>" .
+                                date(
+                                    "d-m-Y H:i:s",
+                                    filemtime("./data/$page/$block")
+                                ) .
+                                "</td>
+                        </tr>
+                        ";
+                        }
                     }
                 } ?>
             </tbody>
@@ -98,3 +104,15 @@ require_once "../inc/header.php";
 </main>
 
 <?php require_once "../inc/footer.php"; ?>
+
+<!-- Config of Datatables -->
+<script type="text/javascript">
+    $(function() {
+        if ($(".dataTable").length > 0) {
+            $(".dataTable").DataTable({
+                pageLength: 25,
+                responsive: true,
+                });
+        }
+    });
+</script>

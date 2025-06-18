@@ -1,5 +1,4 @@
 <?php
-<?php
 
 // Autoload classes
 spl_autoload_register(function ($class_name) {
@@ -51,33 +50,33 @@ if (isset($_POST['updatepassword'])) {
 require_once("../inc/header.php");
 ?>
 
+<main class="container py-4">
+    <div class="row">
+        <div class="col-md-12">
 
-<div class="row">
-    <div class="col-md-12">
+            <h3>Change password for <?= $account->firstname ?> <?= $account->name ?></h3>
 
-        <h3>Change password for <?= $account->firstname ?> <?= $account->name ?></h3>
+            <form action="" method="post">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label>New password</label>
 
-        <form action="" method="post">
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <label>New password</label>
-
-                    <div class="input-group">
-                        <input type="password" name="password" value="" class="form-control">
+                        <div class="input-group">
+                            <input type="password" name="password" value="" class="form-control">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <label>Repeat password</label>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <label>Repeat password</label>
 
-                    <div class="input-group">
-                        <input type="password" name="password2" value="" class="form-control">
+                        <div class="input-group">
+                            <input type="password" name="password2" value="" class="form-control">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <input type='submit' class='btn btn-lg button-primary' name='updatepassword' value='Update password'>
+                <input type='submit' class='btn btn-lg button-primary' name='updatepassword' value='Update password'>
 
-        </form>
-<?php require_once("../inc/footer.php"); ?>
+            </form>
+            <?php require_once("../inc/footer.php"); ?>

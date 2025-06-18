@@ -206,13 +206,13 @@ require_once "../inc/header.php";
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($files as $file) {
-                        $path = $uploadFiles . $file;
-                        $size = round(filesize($path) / 1024, 1) . " KB";
-                        $modified = date("Y-m-d H:i", filemtime($path));
-                        $filename = htmlspecialchars($file);
-                        $encoded = urlencode($file);
-                        echo "
+                        <?php foreach ($files as $file) {
+                            $path = $uploadFiles . $file;
+                            $size = round(filesize($path) / 1024, 1) . " KB";
+                            $modified = date("Y-m-d H:i", filemtime($path));
+                            $filename = htmlspecialchars($file);
+                            $encoded = urlencode($file);
+                            echo "
                         <tr>
                             <td>
                                 <a href='download.php?file=files/$encoded' title='Download'><i class='fa fa-download'></i></a>
@@ -224,7 +224,7 @@ require_once "../inc/header.php";
                             <td><a href='$path' target='_blank' class='btn btn-sm btn-outline-primary'>Open</a></td>
                         </tr>
                         ";
-                    } ?>
+                        } ?>
                     </tbody>
                 </table>
             </div>
@@ -265,14 +265,14 @@ require_once "../inc/header.php";
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($videos as $video) {
-                        $path = $uploadVideos . $video;
-                        $size = round(filesize($path) / 1024, 1) . " KB";
-                        $modified = date("Y-m-d H:i", filemtime($path));
-                        $filename = htmlspecialchars($video);
-                        $encoded = urlencode($video);
+                        <?php foreach ($videos as $video) {
+                            $path = $uploadVideos . $video;
+                            $size = round(filesize($path) / 1024, 1) . " KB";
+                            $modified = date("Y-m-d H:i", filemtime($path));
+                            $filename = htmlspecialchars($video);
+                            $encoded = urlencode($video);
 
-                        echo "<tr>
+                            echo "<tr>
                             <td>
                                 <a href='download.php?file=videos$encoded' title='Download'><i class='fa fa-download'></i></a>
                                 <a href='delete.php?file=videos/$encoded' title='Delete' onclick=\"return confirm('Verwijder bestand $filename?');\"><i class='fa fa-trash'></i></a>
@@ -282,31 +282,30 @@ require_once "../inc/header.php";
                             <td>$size</td>
                             <td><a href='$path' target='_blank' class='btn btn-sm btn-outline-primary'>Open</a></td>
                         </tr>";
-                    } ?>
+                        } ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-<!-- Config of Datatables -->
-<script type="text/javascript">
-  $(function() {
-    // images
-    if ($(".datatable").length > 0) {
-      $(".datatable").DataTable({
-        "pageLength": 25,
-        "responsive": true,
-        "paging": true,
-        layout: {
-          topStart: 'pageLength',
-          topEnd: 'search',
-          bottomStart: 'info',
-          bottomEnd: 'paging',
-        }
-      });
-    }
-  });
-</script>
+    <?php require_once "../inc/footer.php"; ?>
 
-<?php require_once "../inc/footer.php"; ?>
+    <!-- Config of Datatables -->
+    <script type="text/javascript">
+        $(function() {
+            if ($(".dataTable").length > 0) {
+                $(".dataTable").DataTable({
+                    "pageLength": 25,
+                    "responsive": true,
+                    "paging": true,
+                    layout: {
+                        topStart: 'pageLength',
+                        topEnd: 'search',
+                        bottomStart: 'info',
+                        bottomEnd: 'paging',
+                    }
+                });
+            }
+        });
+    </script>

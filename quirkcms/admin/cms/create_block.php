@@ -90,7 +90,7 @@ require_once "../inc/header.php";
                 <input type="text" class="form-control" id="blockName" name="blockName" required>
             </div>
             <button type="submit" name="createNewBlock" class="btn btn-primary">Create Block</button>
-            <a href="./" class="btn btn-secondary">Cancel</a>
+            <a href="../" class="btn btn-secondary" role=button">Cancel</a>
         </form>
 
     </div>

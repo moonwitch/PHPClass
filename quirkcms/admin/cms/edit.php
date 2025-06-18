@@ -33,13 +33,14 @@ if (isset($_POST["saveNewContent"]) && !empty($_POST["content"])) {
                 urldecode($_GET["block"])
         )
     ) {
-        $msg = "Helaas pindakaas; an error was found.";
+        $_SESSION["cms_feedback"] = "Helaas pindakaas; an error was found.";
         header("Location: .");
         die();
     } else {
         $page = urldecode($_GET["page"]);
         $block = urldecode($_GET["block"]);
         file_put_contents("./data/" . $page . "/" . $block, $_POST["content"]);
+        $_SESSION["cms_feedback"] = "File saved!";
     }
 }
 
@@ -73,25 +74,35 @@ require_once "../inc/header.php";
         <p>Fill in the form below to edit the block.</p>
 
         <form method="post" action="">
-            <textarea style="width: 80%; height: 300px" id="summernote" name="content">
-                <?= $fileContents ?>
+            <textarea style="width: 80%; height: 300px" id='summernote' name='content'>
+                <?= htmlspecialchars($fileContents) ?>
             </textarea>
-            <input type="submit" name="saveNewContent" value="Save">
+            <input type="submit" name="saveNewContent" value="Save" class="btn btn-primary mt-3">
+            <a href="./" class="btn btn-primary mt-3" role="button">Cancel</a>
         </form>
-
-        <a href="./" class="btn btn-secondary" role="button">Cancel</a>
     </div>
 </main>
 
+
 <?php require_once "../inc/footer.php"; ?>
 
-<!-- include summernote css/js -->
-<!-- Using bs5 as I am using bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.js"></script>
+<!-- Config last after loading all libs -->
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#summernote').summernote();
+        $('#summernote').summernote({
+            placeholder: 'Start typing your content here...',
+            tabsize: 2,
+            height: 350, // Increased height for better editing
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
     });
 </script>
