@@ -52,9 +52,7 @@ if (
     } else {
         // Create the file
         if (touch($path)) {
-            $_SESSION[
-                "cms_feedback"
-            ] = "Block '$blockName' created successfully!";
+            $_SESSION["cms_feedback"] = "Block '$blockName' created successfully!";
             header("Location: ./");
             exit();
         } else {
@@ -89,8 +87,8 @@ require_once "../inc/header.php";
                 <label for="blockName">Block Name:</label>
                 <input type="text" class="form-control" id="blockName" name="blockName" required>
             </div>
-            <button type="submit" name="createNewBlock" class="btn btn-primary">Create Block</button>
-            <a href="../" class="btn btn-secondary" role=button">Cancel</a>
+            <button type="submit" name="createNewBlock" class="btn btn-primary mt-3">Create Block</button>
+            <a href="./" class="btn btn-primary mt-3" role="button">Back to overview</a>
         </form>
 
     </div>
@@ -100,3 +98,49 @@ require_once "../inc/header.php";
 
 require_once "../inc/footer.php";
 ?>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Start typing your content here...',
+            tabsize: 2,
+            height: 350, // Increased height for better editing
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+            }
+
+        });
+    });
+
+    function sendFile(file, editor, welEditable) {
+        data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "uploadimage.php",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(url) {
+                //editor.insertImage(welEditable, url);
+                $('.summernote').summernote('insertImage', url);
+                //console.log(url);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + " " + errorThrown);
+            }
+        });
+    }
+</script>

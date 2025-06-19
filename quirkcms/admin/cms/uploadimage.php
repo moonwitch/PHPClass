@@ -1,17 +1,16 @@
 <?php
 // enkele ssettings ophalen zoals het MASTERPATH
-require "../classes/settings.php";
-if ($_FILES["file"]["name"]) {
-    if (!$_FILES["file"]["error"]) {
-        $source = $_FILES["file"]["tmp_name"];
+require("../classes/settings.php");
+if ($_FILES['file']['name']) {
+    if (!$_FILES['file']['error']) {
+        $source = $_FILES['file']["tmp_name"];
         $info = getimagesize($source);
-        if ($info["mime"] == "image/jpeg") {
+        if ($info['mime'] == 'image/jpeg')
             $image = imagecreatefromjpeg($source);
-        } elseif ($info["mime"] == "image/gif") {
+        elseif ($info['mime'] == 'image/gif')
             $image = imagecreatefromgif($source);
-        } elseif ($info["mime"] == "image/png") {
+        elseif ($info['mime'] == 'image/png')
             $image = imagecreatefrompng($source);
-        }
         $maxw = 1000;
         $maxh = 1000;
         if ($maxw >= $info[0] && $maxh >= $info[1]) {
@@ -37,16 +36,14 @@ if ($_FILES["file"]["name"]) {
             $info[1]
         );
         $name = md5(rand(100, 500));
-        $ext = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
-        $filename = $name . "." . $ext;
+        $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+        $filename = $name . '.' . $ext;
         imagejpeg($thumb, "../../images/" . $filename, 75);
-        $imagePath =
-            "http://" . $_SERVER["HTTP_HOST"] . "/" . MASTERPATH . "/images/";
+        $imagePath = 'http://' . $_SERVER['HTTP_HOST'] . "/" . MASTERPATH . "/images/";
         echo $imagePath . $filename; //change this URL*/
     } else {
-        echo $message =
-            'Ooops! Your upload triggered the following error:
-' . $_FILES["file"]["error"];
+        echo $message = 'Ooops! Your upload triggered the following error: 
+' . $_FILES['file']['error'];
     }
 }
 ?>

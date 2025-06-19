@@ -9,39 +9,42 @@ if (!isset($_SESSION["user"])) {
     die("Please log in first.");
 }
 
-if ($_SESSION["user"]->role == "admin") {
-    $is_admin = true;
-} else {
-    $is_admin = false;
-}
+// --- START: PHP Changes ---
 
-if (isset($_SESSION["cms_feedback"])) {
-    echo '<div class="alert alert-success">' .
-        htmlspecialchars($_SESSION["cms_feedback"]) .
-        "</div>";
-    unset($_SESSION["cms_feedback"]);
-}
-
-// Check if the form is submitted
-if (isset($_POST["createNewPage"]) && !empty($_POST["page"])) {
-    $path = "../cms/data/" . urldecode($_POST["page"]);
+// Check if the form is submitted with both a page name and content
+if (
+    isset($_POST["createNewPage"]) &&
+    !empty($_POST["page"]) &&
+    isset($_POST["content"])
+) {
+    $pageName = trim($_POST["page"]);
+    $pageContent = $_POST["content"];
+    $path = "../cms/data/" . urldecode($pageName);
 
     // Check if the page already exists
     if (is_dir($path)) {
-        $_SESSION["cms_feedback"] = "Page '$page' already exists.";
+        $_SESSION["cms_feedback"] = "Page '$pageName' already exists.";
     } else {
-        // Create the page
+        // Create the page directory first
         if (mkdir($path, 0777, true)) {
-            $_SESSION["cms_feedback"] = "Page '$page' created successfully!";
-            header("Location: ./");
-            exit();
+            // Now, save the content from Summernote into a file
+            if (
+                file_put_contents($path . "/block.php", $pageContent) !== false
+            ) {
+                $_SESSION["cms_feedback"] =
+                    "Page '$pageName' created successfully!";
+                header("Location: ./");
+                exit();
+            } else {
+                $_SESSION["cms_feedback"] =
+                    "Directory created, but failed to save page content.";
+            }
         } else {
-            $_SESSION["cms_feedback"] = "Failed to create page '$page'.";
+            $_SESSION["cms_feedback"] = "Failed to create page '$pageName'.";
         }
     }
 }
 
-// HTML header
 require_once "../inc/header.php";
 ?>
 
@@ -58,13 +61,56 @@ require_once "../inc/header.php";
             <label for="page">Page Name:</label>
             <input type="text" class="form-control" id="page" name="page" required>
         </div>
-        <button type="submit" name="createNewPage" class="btn btn-primary">Create Page</button>
-        <a href="./" class="btn btn-secondary">Cancel</a>
+
+        <div class="form-group mt-3">
+            <label for="summernote">Page Content:</label>
+            <textarea id="summernote" name="content"></textarea>
+        </div>
+        <button type="submit" name="createNewPage" class="btn btn-primary mt-3">Create Page</button>
+        <a href="./" class="btn btn-secondary mt-3" role="button">Back to overview</a>
+
     </form>
-    </div>
-</main>
+</main> <?php require_once "../inc/footer.php"; ?>
 
-    <?php // HTML footer
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Start typing your content here...',
+            tabsize: 2,
+            height: 350,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {
+                onImageUpload: function(files) {
+                    sendFile(files[0]);
+                }
+            }
+        });
+    });
 
-require_once "../inc/footer.php";
-?>
+    function sendFile(file) {
+        data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "uploadimage.php", // Make sure this path is correct
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(url) {
+                $('#summernote').summernote('insertImage', url);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + " " + errorThrown);
+            }
+        });
+    }
+</script>

@@ -6,5 +6,5 @@
    define("SERVER", "localhost");
 
 	/* Geef hier het path, als je niet op de root folder van je website zit !*/
-	define("MASTERPATH", "quirkcms");
+	define("MASTERPATH", ".");
 ?>

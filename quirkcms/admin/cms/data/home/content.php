@@ -1,6 +1,6 @@
-<div class="welcome-section">
+                                                                <div class="welcome-section">
     <h2>Welkom bij Zeis en Bijl</h2>
-    <p>Specialist in tuinaanleg en tuinonderhoud in Limburg en Vlaams-Brabant</p>
+    <p>Specialist in tuinaanleg en tuinonderhoud in Limburg en Vlaams-Brabant</p><p><br></p>
 
     <div class="service-highlights">
         <div class="service-card">
@@ -20,8 +20,6 @@
         <div class="service-card">
             <img src="https://picsum.photos/id/239/400/300" alt="Tuinontwerp">
             <h3>Tuinontwerp</h3>
-            <p>Laat uw droomtuin tot leven komen met een professioneel ontwerp.</p>
-            <a href="tuinontwerp.php" class="btn btn-primary">Meer info</a>
-        </div>
+            <p>Laat uw droomtuin tot leven komen met een professioneel ontwerp.</p><p><a href="tuinontwerp.php" class="btn btn-primary" style="font-family: Merriweather, serif; font-size: 16px;">Meer info</a></p></div>
     </div>
-</div>
+</div>                                                

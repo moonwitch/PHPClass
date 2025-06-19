@@ -71,14 +71,19 @@ require_once "../inc/header.php";
         <h3>Content Management System</h3>
 
         <h2>Edit Block</h2>
-        <p>Fill in the form below to edit the block.</p>
+        <div class="mb-4">
+            <p class="mb-1 fw-bold">Include command:</p>
+            <code class="d-block p-2 bg-light border rounded">
+                &lt;?php include('cms/data/<?= htmlspecialchars($page) ?>/<?= htmlspecialchars($block) ?>'); ?&gt;
+            </code>
+        </div>
 
         <form method="post" action="">
             <textarea style="width: 80%; height: 300px" id='summernote' name='content'>
                 <?= htmlspecialchars($fileContents) ?>
             </textarea>
             <input type="submit" name="saveNewContent" value="Save" class="btn btn-primary mt-3">
-            <a href="./" class="btn btn-primary mt-3" role="button">Cancel</a>
+            <a href="./" class="btn btn-primary mt-3" role="button">Back to overview</a>
         </form>
     </div>
 </main>
@@ -94,15 +99,33 @@ require_once "../inc/header.php";
             placeholder: 'Start typing your content here...',
             tabsize: 2,
             height: 350, // Increased height for better editing
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ]
+
+            callbacks: {
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0], editor, welEditable);
+                }
+            },
         });
-    });
+
+    function sendFile(file, editor, welEditable) {
+        data = new FormData();
+        data.append("file", file);
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "uploadimage.php",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(url) {
+                //editor.insertImage(welEditable, url);
+                $('#summernote').summernote('insertImage', url);
+                //console.log(url);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error(textStatus + " " + errorThrown);
+            }
+        });
+    }
+});
 </script>
