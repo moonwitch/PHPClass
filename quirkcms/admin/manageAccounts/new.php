@@ -110,7 +110,7 @@ require_once("../inc/header.php");
                 </div>
             </div>
 
-            <input type="submit" value="Add userdata" name="adduserdata" class="btn btn-lg btn-primary">
+            <input type="submit" value="Add User" name="adduserdata" class="btn mt-3 btn-primary">
 
         </form>
     </div>

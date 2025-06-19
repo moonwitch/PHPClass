@@ -85,7 +85,7 @@ require_once("../inc/header.php");
                 </div>
             </div>
 
-            <input type='submit' class='btn btn-lg button-primary' name='updateuserdata' value='Update userdata'>
+            <input type='submit' class='btn btn-primary mt-3' name='updateuserdata' value='Update userdata'>
 
         </form>
         <?php require_once("../inc/footer.php"); ?>

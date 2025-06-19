@@ -46,7 +46,7 @@ require_once "../inc/header.php";
     <div class="d-grid gap-2 py-4 d-md-flex justify-content-md-end">
         <a href='./create_page.php' class='btn btn-primary mt-3' role="button">Add new page </a>
         <a href='./create_block.php' class='btn btn-primary mt-3' role="button">Add new block </a>
-        <a href="../" class="btn btn-outline-primary  mt-3" role="button">Back to Admin</a>
+        <a href="../" class="btn btn-secondary mt-3" role="button">Back to Admin</a>
     </div>
 
     <div class="row g-4">

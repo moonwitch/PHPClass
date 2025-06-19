@@ -49,7 +49,7 @@ require_once "../inc/header.php";
 <main class="container">
     <h3>Content Management System</h3>
     <div class="d-grid gap-2 py-4 d-md-flex justify-content-md-end">
-        <a href="./" class="btn btn-secondary" role="button">Back to Admin</a>
+        <a href="./" class="btn btn-secondary mt-3" role="button">Back to Admin</a>
     </div>
 
     <h2>Create New Page</h2>

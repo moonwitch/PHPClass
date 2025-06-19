@@ -61,7 +61,7 @@ require_once "../inc/header.php";
     <div class="row g-4">
         <h3>Content Management System</h3>
         <div class="d-grid gap-2 py-4 d-md-flex justify-content-md-end">
-            <a href="../" class="btn btn-secondary" role="button">Back to Admin</a>
+            <a href="../" class="btn btn-secondary mt-3" role="button">Back to Admin</a>
         </div>
         <h2>Create New Block</h2>
         <form method="post">
@@ -80,7 +80,7 @@ require_once "../inc/header.php";
                 <input type="text" class="form-control" id="blockName" name="blockName" required>
             </div>
             <button type="submit" name="createNewBlock" class="btn btn-primary mt-3">Create Block</button>
-            <a href="./" class="btn btn-primary mt-3" role="button">Back to overview</a>
+            <a href="./" class="btn btn-secondary mt-3" role="button">Back to overview</a>
         </form>
 
     </div>

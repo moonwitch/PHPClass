@@ -22,7 +22,7 @@ require_once "./inc/header.php";
             #count Users : [AANTAL USERS]<br>
             #count Admins: [AANTAL ADMINS]
           </p>
-          <a href="./manageAccounts/" class="btn btn-primary btn-sm">Manage Accounts</a>
+          <a href="./manageAccounts/" class="btn btn-primary mt-3">Manage Accounts</a>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@ require_once "./inc/header.php";
               #count Files: [FILEOCUNT<br>
             #count Images: [AANTAL AFBEELDINGEN]
           </p>
-          <a href="./manageFiles/" class="btn btn-primary btn-sm">Manage Files</a>
+          <a href="./manageFiles/" class="btn btn-primary mt-3">Manage Files</a>
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@ require_once "./inc/header.php";
             Manage the content of the website. <br>
             Make changes to the editable blocks on your pages.
           </p>
-          <a href="./cms/" class="btn btn-primary btn-sm">Manage Content</a>
+          <a href="./cms/" class="btn btn-primary mt-3">Manage Content</a>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@ require_once "./inc/header.php";
             Navigate all your files online.<br>
             Full Access
           </p>
-          <a href="./explorer/?reset" class="btn btn-primary btn-sm">File Explorer</a>
+          <a href="./explorer/?reset" class="btn btn-primary mt-3">File Explorer</a>
         </div>
       </div>
     </div>

@@ -75,7 +75,7 @@ require_once "../inc/header.php";
                 <?= htmlspecialchars($fileContents) ?>
             </textarea>
             <input type="submit" name="saveNewContent" value="Save" class="btn btn-primary mt-3">
-            <a href="./" class="btn btn-primary mt-3" role="button">Back to overview</a>
+            <a href="./" class="btn btn-secondary mt-3" role="button">Back to overview</a>
         </form>
     </div>
 </main>

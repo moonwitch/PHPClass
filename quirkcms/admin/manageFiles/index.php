@@ -79,7 +79,7 @@ require_once "../inc/header.php";
 <main class="container">
     <h3>File Management</h3>
     <div class="d-grid  gap-2 d-md-flex justify-content-md-end">
-        <a href="../" class="btn btn-outline-primary" role="button">Back to Admin</a>
+        <a href="../" class="btn btn-secondary mt-3" role="button">Back to Admin</a>
     </div>
     <!-- We want tabs for images and files AND videos -->
     <ul class="nav nav-tabs" id="fileTabs" role="tablist">
@@ -116,7 +116,7 @@ require_once "../inc/header.php";
                             </div>
                         </div>
                         <div class="col-auto">
-                            <button type="submit" name="submit" value="Submit" class="btn btn-primary">Upload Images</button>
+                            <button type="submit" name="submit" value="Submit" class="btn btn-primary mt-3">Upload Images</button>
                         </div>
                     </form>
                 </div>
@@ -176,7 +176,7 @@ require_once "../inc/header.php";
                             <input class="form-control" type="file" id="fileInput" name="files[]" multiple>
                         </div>
                         <div class="col-auto">
-                            <button type="submit" name="submit" value="Submit" class="btn btn-primary">Upload Files</button>
+                            <button type="submit" name="submit" value="Submit" class="btn btn-primary mt-3">Upload Files</button>
                         </div>
                     </form>
                 </div>

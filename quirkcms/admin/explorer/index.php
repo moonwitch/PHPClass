@@ -99,7 +99,7 @@ require_once "../inc/header.php";
 <main class="container py-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>File Explorer</h3>
-        <a href="../" class="btn btn-outline-primary" role="button">Back to Admin</a>
+        <a href="../" class="btn btn-secondary mt-3" role="button">Back to Admin</a>
     </div>
 
     <?php
@@ -115,7 +115,7 @@ require_once "../inc/header.php";
             <form action="upload.php" method="post" enctype="multipart/form-data" class="d-flex flex-wrap gap-2 align-items-center">
                 <label for="fileToUpload" class="form-label mb-0 me-2">Upload new file:</label>
                 <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" style="flex-grow: 1;" required>
-                <button type="submit" class="btn btn-primary">Upload</button>
+                <button type="submit" class="btn btn-primary mt-3">Upload</button>
             </form>
         </div>
     </div>
