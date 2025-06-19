@@ -14,21 +14,21 @@ if (!isset($_SESSION["user"])) {
 }
 
 // Check if the form is submitted
-if (isset($_POST["saveNewContent"]) && !empty($_POST["content"])) {
-    if (
-        empty($_GET["page"]) ||
-        empty($_GET["block"]) ||
-        !file_exists(
-            "./data/" .
-                urldecode($_GET["page"]) .
-                "/" .
-                urldecode($_GET["block"])
-        )
-    ) {
-        $_SESSION["cms_feedback"] = "Helaas pindakaas; an error was found.";
-        header("Location: .");
-        die();
-    } else {
+if (
+    empty($_GET["page"]) ||
+    empty($_GET["block"]) ||
+    !file_exists(
+        "./data/" .
+            urldecode($_GET["page"]) .
+            "/" .
+            urldecode($_GET["block"])
+    )
+) {
+    // This provides a clear, helpful error message.
+    $_SESSION["cms_feedback"] = "Error: The block you tried to edit does not exist. It may have been deleted.";
+    header("Location: .");
+    die();
+} else {
         $page = urldecode($_GET["page"]);
         $block = urldecode($_GET["block"]);
         file_put_contents("./data/" . $page . "/" . $block, $_POST["content"]);
@@ -41,11 +41,14 @@ if (
     empty($_GET["page"]) ||
     empty($_GET["block"]) ||
     !file_exists(
-        "./data/" . urldecode($_GET["page"]) . "/" . urldecode($_GET["block"])
+        "./data/" .
+            urldecode($_GET["page"]) .
+            "/" .
+            urldecode($_GET["block"])
     )
 ) {
-    $_SESSION["cms_feedback"] =
-        "Error: Something went wrong, someone was blamed.";
+    // This provides a clear, helpful error message.
+    $_SESSION["cms_feedback"] = "Error: The block you tried to edit does not exist. It may have been deleted.";
     header("Location: .");
     die();
 } else {

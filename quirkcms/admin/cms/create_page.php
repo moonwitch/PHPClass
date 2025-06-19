@@ -56,8 +56,9 @@ require_once "../inc/header.php";
     <p>Fill in the form below to create a new page.</p>
     <form method="post">
         <div class="form-group">
-            <label for="page">Page Name:</label>
+            <label for="page" class="form-label">Page Name:</label>
             <input type="text" class="form-control" id="page" name="page" required>
+            <small class="form-text text-muted">This will also be used in the URL. Use simple names without special characters.</small>
         </div>
 
         <div class="form-group mt-3">

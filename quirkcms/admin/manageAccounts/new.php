@@ -102,8 +102,7 @@ require_once("../inc/header.php");
 
                     <div class="input-group">
                         <select name="status" class="form-control" required>
-                            <option value="">Select status</option>
-                            <option value="active">Active</option>
+                            <option value="active" selected>Active</option>
                             <option value="inactive">Inactive</option>
                         </select>
                     </div>
