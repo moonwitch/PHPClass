@@ -9,8 +9,6 @@ if (!isset($_SESSION["user"])) {
     die("Please log in first.");
 }
 
-// --- START: PHP Changes ---
-
 // Check if the form is submitted with both a page name and content
 if (
     isset($_POST["createNewPage"]) &&

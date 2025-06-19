@@ -8,14 +8,6 @@ spl_autoload_register(function ($class_name) {
 // Start session
 session_start();
 
-// general feedback method :D
-if (isset($_SESSION["cms_feedback"])) {
-    echo '<div class="alert alert-success">' .
-        htmlspecialchars($_SESSION["cms_feedback"]) .
-        "</div>";
-    unset($_SESSION["cms_feedback"]);
-}
-
 // Is the form submitted?
 if (
 	isset($_POST['submitKnopLogin']) &&

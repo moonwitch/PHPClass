@@ -14,14 +14,6 @@ if (!isset($_SESSION["user"])) {
 	die("Please log in first.");
 }
 
-// general feedback method :D
-if (isset($_SESSION["cms_feedback"])) {
-	echo '<div class="alert alert-success">' .
-		htmlspecialchars($_SESSION["cms_feedback"]) .
-		"</div>";
-	unset($_SESSION["cms_feedback"]);
-}
-
 if ($_SESSION["user"]->role == "admin") {
 	$is_admin = true;
 } else {

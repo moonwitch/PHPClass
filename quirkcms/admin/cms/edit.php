@@ -13,14 +13,6 @@ if (!isset($_SESSION["user"])) {
     die("Please log in first.");
 }
 
-// general feedback method :D
-if (isset($_SESSION["cms_feedback"])) {
-    echo '<div class="alert alert-success">' .
-        htmlspecialchars($_SESSION["cms_feedback"]) .
-        "</div>";
-    unset($_SESSION["cms_feedback"]);
-}
-
 // Check if the form is submitted
 if (isset($_POST["saveNewContent"]) && !empty($_POST["content"])) {
     if (

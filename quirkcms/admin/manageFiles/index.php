@@ -13,16 +13,7 @@ if (!isset($_SESSION["user"])) {
     die("Please log in first.");
 }
 
-// general feedback method :D
-if (isset($_SESSION["cms_feedback"])) {
-    echo '<div class="alert alert-success">' .
-        htmlspecialchars($_SESSION["cms_feedback"]) .
-        "</div>";
-    unset($_SESSION["cms_feedback"]);
-}
-
 // If files folder does not exist, create it
-// // Locations (ensure these directories exist and are writable)
 $baseUploadPath = __DIR__ . "/../../";
 $uploadImages = $baseUploadPath . "images/";
 $uploadFiles = $baseUploadPath . "files/";

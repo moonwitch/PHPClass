@@ -26,34 +26,45 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-		<div class="container"> <a class="navbar-brand" href="../">QuirkCMS</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ms-auto">
-					<li class='nav-item dropdown'>
-						<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-							<i class="fas fa-user me-1"></i> Hi GEBRUIKERSNAAM </a>
-						<ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
-							<li><a class='dropdown-item' href='../'><i class="fas fa-tachometer-alt fa-fw me-2"></i>Dashboard</a></li>
-							<li>
-								<hr class='dropdown-divider'>
-							</li>
-							<li><a class='dropdown-item' href='../manageAccounts/'><i class="fas fa-users-cog fa-fw me-2"></i>Manage Accounts</a></li>
-							<li><a class='dropdown-item' href='../cms/'><i class="fas fa-edit fa-fw me-2"></i>Manage Content</a></li>
-							<li><a class='dropdown-item' href='../manageFiles/'><i class="fas fa-folder-open fa-fw me-2"></i>Manage Files</a></li>
-							<li><a class='dropdown-item' href='../explorer?reset'><i class="fas fa-compass fa-fw me-2"></i>File Explorer</a></li>
-							<li>
-								<hr class='dropdown-divider'>
-							</li>
-							<li><a class='dropdown-item' href='../login/logoff.php'><i class="fas fa-sign-out-alt fa-fw me-2"></i>Log off</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+		<div class="container"> <a class="navbar-brand" href="../"><img </a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto">
+						<li class='nav-item dropdown'>
+							<a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+								<i class="fas fa-user me-1"></i> Hi GEBRUIKERSNAAM </a>
+							<ul class='dropdown-menu dropdown-menu-end' aria-labelledby='navbarDropdown'>
+								<li><a class='dropdown-item' href='../'><i class="fas fa-tachometer-alt fa-fw me-2"></i>Dashboard</a></li>
+								<li>
+									<hr class='dropdown-divider'>
+								</li>
+								<li><a class='dropdown-item' href='../manageAccounts/'><i class="fas fa-users-cog fa-fw me-2"></i>Manage Accounts</a></li>
+								<li><a class='dropdown-item' href='../cms/'><i class="fas fa-edit fa-fw me-2"></i>Manage Content</a></li>
+								<li><a class='dropdown-item' href='../manageFiles/'><i class="fas fa-folder-open fa-fw me-2"></i>Manage Files</a></li>
+								<li><a class='dropdown-item' href='../explorer?reset'><i class="fas fa-compass fa-fw me-2"></i>File Explorer</a></li>
+								<li>
+									<hr class='dropdown-divider'>
+								</li>
+								<li><a class='dropdown-item' href='../login/logoff.php'><i class="fas fa-sign-out-alt fa-fw me-2"></i>Log off</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 		</div>
 	</nav>
+
+	<div class="container">
+		<?php
+		if (isset($_SESSION["cms_feedback"])) {
+			echo '<div class="alert alert-success alert-dismissible fade show" role="alert">' .
+				htmlspecialchars($_SESSION["cms_feedback"]) .
+				'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+			unset($_SESSION["cms_feedback"]);
+		}
+		?>
+	</div>
 
 	<section class="p-4 p-md-5 mb-4 rounded-3 bg-body-tertiary banner">
 		<div class="container py-4">
